@@ -1,0 +1,1544 @@
+2024-08-15 10:22:06.945 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-15 10:22:14.073 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-15 17:29:18.966 | ERROR    | aiogram.dispatcher.dispatcher:_process_update:315 - Cause exception while process update id=212292413 by bot id=6770949983
+KeyError: 'order'
+Traceback (most recent call last):
+
+  File "/root/bot/main.py", line 18, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7f9976befd90>
+    │       └ <function run at 0x7f9976ab2710>
+    └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x7f997275fb50>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f997628f6d0>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f997628f640>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f99762951b0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f99761f0b80>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+> File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │    │           │    └ Update(update_id=212292413, message=Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UT...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+                     │    └ <function Dispatcher.feed_update at 0x7f9972dee200>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261fc10>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292413, message=Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UT...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x7f997261fdf0>, functools.par...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292413, message=Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UT...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x7f997261fe20>, <function TelegramEventObserver.tri...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292413, message=Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UT...
+                 └ <function TelegramEventObserver.trigger at 0x7f9971bb2dd0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Update(update_id=212292413, message=Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UT...
+                 └ functools.partial(<middlewares.usermiddleware.UsersMiddleware object at 0x7f997261ff70>, <function CallableObject.call at 0x7...
+
+  File "/root/bot/middlewares/usermiddleware.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292413, message=Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UT...
+                 └ <function CallableObject.call at 0x7f9971bb3640>
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x7f997261e140'>>, Update(update_id=212292413, mess...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │    │                           │                  └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x7f9972ded870>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9971bb0a60>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261e1a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router 'handlers.admins'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9971bb2440>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f99727e5000>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router 'handlers.admins'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router '0x7f9972624040'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9971bb11b0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f9972624070>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router '0x7f9972624040'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │        │       └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                     │        └ <function TelegramEventObserver.trigger at 0x7f9972decee0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f9972624070>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14, 29, 18, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='p...
+                 └ <function CallableObject.call at 0x7f9971bb2d40>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<function order_desc_c at 0x7f9972661510>, Message(message_id=2847, date=datetime.datetime(2024, 8, 15, 14,...
+
+  File "/root/bot/handlers/admins/apanel.py", line 759, in order_desc_c
+    order = Order.get(Order.id == data['order'])
+            │     │   │     │     └ {'msg_id': 2846, 'category': 2, 'video': 6}
+            │     │   │     └ <peewee.FieldAccessor object at 0x7f99729a5cf0>
+            │     │   └ <Model: Order>
+            │     └ <classmethod(<function Model.get at 0x7f99729ad3f0>)>
+            └ <Model: Order>
+
+KeyError: 'order'
+2024-08-15 22:09:40.228 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 12:46:02.119 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 12:46:13.295 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 12:52:06.184 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 12:53:57.774 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 12:57:40.037 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 12:59:31.664 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 12:59:42.811 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 13:02:34.842 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 13:05:16.745 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 13:08:40.462 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-08-18 23:04:09.946 | ERROR    | aiogram.dispatcher.dispatcher:_process_update:315 - Cause exception while process update id=212292527 by bot id=6770949983
+TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 637, in write_bytes
+    await self.body.write(writer)
+          │    │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f99718c2620>
+          │    │    └ <function MultipartWriter.write at 0x7f997316ab90>
+          │    └ <aiohttp.multipart.MultipartWriter object at 0x7f99718c1e70>
+          └ <aiohttp.client_reqrep.ClientRequest object at 0x7f99718c2c80>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/multipart.py", line 952, in write
+    await part.write(writer)
+          │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f99718c2620>
+          │    └ <function AsyncIterablePayload.write at 0x7f9973146cb0>
+          └ <aiohttp.payload.AsyncIterablePayload object at 0x7f99718c1780>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/payload.py", line 442, in write
+    chunk = await self._iter.__anext__()
+                  │    │     └ <slot wrapper '__anext__' of 'async_generator' objects>
+                  │    └ <async_generator object FSInputFile.read at 0x7f9971a0cb40>
+                  └ <aiohttp.payload.AsyncIterablePayload object at 0x7f99718c1780>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/types/input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+               │        │    │    └ 'resources/img/main.jpg'
+               │        │    └ <aiogram.types.input_file.FSInputFile object at 0x7f99718c16c0>
+               │        └ <function open at 0x7f99754ddb40>
+               └ <module 'aiofiles' from '/root/bot/venv/lib/python3.10/site-packages/aiofiles/__init__.py'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/base.py", line 98, in __aenter__
+    self._obj = await self._coro
+    │    │            │    └ <member '_coro' of '_ContextManager' objects>
+    │    │            └ <aiofiles.base.AiofilesContextManager object at 0x7f9971b90300>
+    │    └ <member '_obj' of '_ContextManager' objects>
+    └ <aiofiles.base.AiofilesContextManager object at 0x7f9971b90300>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/threadpool/__init__.py", line 94, in _open
+    f = yield from loop.run_in_executor(executor, cb)
+                   │    │               │         └ functools.partial(<built-in function open>, 'resources/img/main.jpg', mode='rb', buffering=-1, encoding=None, errors=None, ne...
+                   │    │               └ None
+                   │    └ <function BaseEventLoop.run_in_executor at 0x7f997628feb0>
+                   └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │        │            └ None
+             │        └ None
+             └ None
+
+FileNotFoundError: [Errno 2] No such file or directory: 'resources/img/main.jpg'
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 181, in make_request
+    async with session.post(
+               │       └ <function ClientSession.post at 0x7f9972f10700>
+               └ <aiohttp.client.ClientSession object at 0x7f9972522410>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 1353, in __aenter__
+    self._resp = await self._coro
+    │    │             │    └ <member '_coro' of '_BaseRequestContextManager' objects>
+    │    │             └ <aiohttp.client._RequestContextManager object at 0x7f99718c13c0>
+    │    └ <member '_resp' of '_BaseRequestContextManager' objects>
+    └ <aiohttp.client._RequestContextManager object at 0x7f99718c13c0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 684, in _request
+    await resp.start(conn)
+          │    │     └ Connection<ConnectionKey(host='api.telegram.org', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers...
+          │    └ <function ClientResponse.start at 0x7f9972eba7a0>
+          └ <ClientResponse(https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto) [None None]>
+            None
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 999, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                             │        └ <function DataQueue.read at 0x7f9973136440>
+                             └ <aiohttp.client_proto.ResponseHandler object at 0x7f9970e23220>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/streams.py", line 640, in read
+    await self._waiter
+          │    └ None
+          └ <aiohttp.client_proto.ResponseHandler object at 0x7f9970e23220>
+
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/main.py", line 18, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7f9976befd90>
+    │       └ <function run at 0x7f9976ab2710>
+    └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x7f997275fb50>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f997628f6d0>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f997628f640>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f99762951b0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f99761f0b80>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+  File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+> File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │    │           │    └ Update(update_id=212292527, message=Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+                     │    └ <function Dispatcher.feed_update at 0x7f9972dee200>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261fc10>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292527, message=Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x7f997261fdf0>, functools.par...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292527, message=Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x7f997261fe20>, <function TelegramEventObserver.tri...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292527, message=Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)...
+                 └ <function TelegramEventObserver.trigger at 0x7f9970e49cf0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Update(update_id=212292527, message=Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)...
+                 └ functools.partial(<middlewares.usermiddleware.UsersMiddleware object at 0x7f997261ff70>, <function CallableObject.call at 0x7...
+
+  File "/root/bot/middlewares/usermiddleware.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292527, message=Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)...
+                 └ <function CallableObject.call at 0x7f9970e49ea0>
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x7f997261e140'>>, Update(update_id=212292527, mess...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │    │                           │                  └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x7f9972ded870>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9972529990>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261e1a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9970e49c60>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f9972dfe230>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router '0x7f99729a6f20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9970e49d80>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f99729a7130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router '0x7f99729a6f20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │        │       └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                     │        └ <function TelegramEventObserver.trigger at 0x7f9972decee0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f99729a7130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+                 └ <function CallableObject.call at 0x7f9970e49e10>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<function cmd_start_register at 0x7f9972793be0>, Message(message_id=2981, date=datetime.datetime(2024, 8, 1...
+
+  File "/root/bot/handlers/users/start.py", line 37, in cmd_start_register
+    await message.answer_photo(photo=photo, caption=text, reply_markup=keyboard)
+          │       │                  │              │                  └ InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🌟 Наши товары', url=None, callback_data='catalog', web_app=...
+          │       │                  │              └ 'Добро пожаловать в фитнес-клуб <b>ATLIX</b>'
+          │       │                  └ <aiogram.types.input_file.FSInputFile object at 0x7f99718c16c0>
+          │       └ <function Message.answer_photo at 0x7f99751a9510>
+          └ Message(message_id=2981, date=datetime.datetime(2024, 8, 18, 20, 4, 9, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pri...
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+                 │   └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c16c0>, business_connection_id=No...
+                 └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+                 │    │       │     │               └ None
+                 │    │       │     └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c16c0>, business_connection_id=No...
+                 │    │       └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+                 │    └ <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f9972f89570>
+                 └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+           │    │                   │          │    └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c16c0>, business_connection_id=No...
+           │    │                   │          └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+           │    │                   └ functools.partial(<bound method AiohttpSession.make_request of <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f9...
+           │    └ ~TelegramType
+           └ <function cast at 0x7f9976256f80>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 188, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+          │                           └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c16c0>, business_connection_id=No...
+          └ <class 'aiogram.exceptions.TelegramNetworkError'>
+
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+2024-08-18 23:04:13.527 | ERROR    | aiogram.dispatcher.dispatcher:_process_update:315 - Cause exception while process update id=212292528 by bot id=6770949983
+TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 637, in write_bytes
+    await self.body.write(writer)
+          │    │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f99718c11e0>
+          │    │    └ <function MultipartWriter.write at 0x7f997316ab90>
+          │    └ <aiohttp.multipart.MultipartWriter object at 0x7f99718c0610>
+          └ <aiohttp.client_reqrep.ClientRequest object at 0x7f99718c3a60>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/multipart.py", line 952, in write
+    await part.write(writer)
+          │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f99718c11e0>
+          │    └ <function AsyncIterablePayload.write at 0x7f9973146cb0>
+          └ <aiohttp.payload.AsyncIterablePayload object at 0x7f99718c23b0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/payload.py", line 442, in write
+    chunk = await self._iter.__anext__()
+                  │    │     └ <slot wrapper '__anext__' of 'async_generator' objects>
+                  │    └ <async_generator object FSInputFile.read at 0x7f9971a0f940>
+                  └ <aiohttp.payload.AsyncIterablePayload object at 0x7f99718c23b0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/types/input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+               │        │    │    └ 'resources/img/main.jpg'
+               │        │    └ <aiogram.types.input_file.FSInputFile object at 0x7f99718c0400>
+               │        └ <function open at 0x7f99754ddb40>
+               └ <module 'aiofiles' from '/root/bot/venv/lib/python3.10/site-packages/aiofiles/__init__.py'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/base.py", line 98, in __aenter__
+    self._obj = await self._coro
+    │    │            │    └ <member '_coro' of '_ContextManager' objects>
+    │    │            └ <aiofiles.base.AiofilesContextManager object at 0x7f9971b93440>
+    │    └ <member '_obj' of '_ContextManager' objects>
+    └ <aiofiles.base.AiofilesContextManager object at 0x7f9971b93440>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/threadpool/__init__.py", line 94, in _open
+    f = yield from loop.run_in_executor(executor, cb)
+                   │    │               │         └ functools.partial(<built-in function open>, 'resources/img/main.jpg', mode='rb', buffering=-1, encoding=None, errors=None, ne...
+                   │    │               └ None
+                   │    └ <function BaseEventLoop.run_in_executor at 0x7f997628feb0>
+                   └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │        │            └ None
+             │        └ None
+             └ None
+
+FileNotFoundError: [Errno 2] No such file or directory: 'resources/img/main.jpg'
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 181, in make_request
+    async with session.post(
+               │       └ <function ClientSession.post at 0x7f9972f10700>
+               └ <aiohttp.client.ClientSession object at 0x7f9972522410>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 1353, in __aenter__
+    self._resp = await self._coro
+    │    │             │    └ <member '_coro' of '_BaseRequestContextManager' objects>
+    │    │             └ <aiohttp.client._RequestContextManager object at 0x7f99718c3340>
+    │    └ <member '_resp' of '_BaseRequestContextManager' objects>
+    └ <aiohttp.client._RequestContextManager object at 0x7f99718c3340>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 684, in _request
+    await resp.start(conn)
+          │    │     └ Connection<ConnectionKey(host='api.telegram.org', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers...
+          │    └ <function ClientResponse.start at 0x7f9972eba7a0>
+          └ <ClientResponse(https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto) [None None]>
+            None
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 999, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                             │        └ <function DataQueue.read at 0x7f9973136440>
+                             └ <aiohttp.client_proto.ResponseHandler object at 0x7f9970e85360>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/streams.py", line 640, in read
+    await self._waiter
+          │    └ None
+          └ <aiohttp.client_proto.ResponseHandler object at 0x7f9970e85360>
+
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/main.py", line 18, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7f9976befd90>
+    │       └ <function run at 0x7f9976ab2710>
+    └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x7f997275fb50>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f997628f6d0>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f997628f640>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f99762951b0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f99761f0b80>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+  File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+> File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │    │           │    └ Update(update_id=212292528, message=Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+                     │    └ <function Dispatcher.feed_update at 0x7f9972dee200>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261fc10>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292528, message=Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x7f997261fdf0>, functools.par...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292528, message=Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x7f997261fe20>, <function TelegramEventObserver.tri...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292528, message=Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC...
+                 └ <function TelegramEventObserver.trigger at 0x7f9970e7b5b0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Update(update_id=212292528, message=Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<middlewares.usermiddleware.UsersMiddleware object at 0x7f997261ff70>, <function CallableObject.call at 0x7...
+
+  File "/root/bot/middlewares/usermiddleware.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292528, message=Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC...
+                 └ <function CallableObject.call at 0x7f9970e7b640>
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x7f997261e140'>>, Update(update_id=212292528, mess...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │    │                           │                  └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x7f9972ded870>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9972529b40>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261e1a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9972528550>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f9972dfe230>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router '0x7f99729a6f20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9970e7b520>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f99729a7130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router '0x7f99729a6f20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │        │       └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │        └ <function TelegramEventObserver.trigger at 0x7f9972decee0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f99729a7130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 └ <function CallableObject.call at 0x7f9970e4a200>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<function cmd_start_register at 0x7f9972793be0>, Message(message_id=2982, date=datetime.datetime(2024, 8, 1...
+
+  File "/root/bot/handlers/users/start.py", line 37, in cmd_start_register
+    await message.answer_photo(photo=photo, caption=text, reply_markup=keyboard)
+          │       │                  │              │                  └ InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🌟 Наши товары', url=None, callback_data='catalog', web_app=...
+          │       │                  │              └ 'Добро пожаловать в фитнес-клуб <b>ATLIX</b>'
+          │       │                  └ <aiogram.types.input_file.FSInputFile object at 0x7f99718c0400>
+          │       └ <function Message.answer_photo at 0x7f99751a9510>
+          └ Message(message_id=2982, date=datetime.datetime(2024, 8, 18, 20, 4, 13, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+                 │   └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c0400>, business_connection_id=No...
+                 └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+                 │    │       │     │               └ None
+                 │    │       │     └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c0400>, business_connection_id=No...
+                 │    │       └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+                 │    └ <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f9972f89570>
+                 └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+           │    │                   │          │    └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c0400>, business_connection_id=No...
+           │    │                   │          └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+           │    │                   └ functools.partial(<bound method AiohttpSession.make_request of <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f9...
+           │    └ ~TelegramType
+           └ <function cast at 0x7f9976256f80>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 188, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+          │                           └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c0400>, business_connection_id=No...
+          └ <class 'aiogram.exceptions.TelegramNetworkError'>
+
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+2024-08-18 23:04:50.448 | ERROR    | aiogram.dispatcher.dispatcher:_process_update:315 - Cause exception while process update id=212292529 by bot id=6770949983
+TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 637, in write_bytes
+    await self.body.write(writer)
+          │    │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f99718c1690>
+          │    │    └ <function MultipartWriter.write at 0x7f997316ab90>
+          │    └ <aiohttp.multipart.MultipartWriter object at 0x7f99718c2b60>
+          └ <aiohttp.client_reqrep.ClientRequest object at 0x7f99718c0c10>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/multipart.py", line 952, in write
+    await part.write(writer)
+          │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f99718c1690>
+          │    └ <function AsyncIterablePayload.write at 0x7f9973146cb0>
+          └ <aiohttp.payload.AsyncIterablePayload object at 0x7f99718c1cf0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/payload.py", line 442, in write
+    chunk = await self._iter.__anext__()
+                  │    │     └ <slot wrapper '__anext__' of 'async_generator' objects>
+                  │    └ <async_generator object FSInputFile.read at 0x7f9971a0c9c0>
+                  └ <aiohttp.payload.AsyncIterablePayload object at 0x7f99718c1cf0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/types/input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+               │        │    │    └ 'resources/img/main.jpg'
+               │        │    └ <aiogram.types.input_file.FSInputFile object at 0x7f99718c1750>
+               │        └ <function open at 0x7f99754ddb40>
+               └ <module 'aiofiles' from '/root/bot/venv/lib/python3.10/site-packages/aiofiles/__init__.py'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/base.py", line 98, in __aenter__
+    self._obj = await self._coro
+    │    │            │    └ <member '_coro' of '_ContextManager' objects>
+    │    │            └ <aiofiles.base.AiofilesContextManager object at 0x7f9971a34880>
+    │    └ <member '_obj' of '_ContextManager' objects>
+    └ <aiofiles.base.AiofilesContextManager object at 0x7f9971a34880>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/threadpool/__init__.py", line 94, in _open
+    f = yield from loop.run_in_executor(executor, cb)
+                   │    │               │         └ functools.partial(<built-in function open>, 'resources/img/main.jpg', mode='rb', buffering=-1, encoding=None, errors=None, ne...
+                   │    │               └ None
+                   │    └ <function BaseEventLoop.run_in_executor at 0x7f997628feb0>
+                   └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │        │            └ None
+             │        └ None
+             └ None
+
+FileNotFoundError: [Errno 2] No such file or directory: 'resources/img/main.jpg'
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 181, in make_request
+    async with session.post(
+               │       └ <function ClientSession.post at 0x7f9972f10700>
+               └ <aiohttp.client.ClientSession object at 0x7f9972522410>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 1353, in __aenter__
+    self._resp = await self._coro
+    │    │             │    └ <member '_coro' of '_BaseRequestContextManager' objects>
+    │    │             └ <aiohttp.client._RequestContextManager object at 0x7f99718c2050>
+    │    └ <member '_resp' of '_BaseRequestContextManager' objects>
+    └ <aiohttp.client._RequestContextManager object at 0x7f99718c2050>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 684, in _request
+    await resp.start(conn)
+          │    │     └ Connection<ConnectionKey(host='api.telegram.org', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers...
+          │    └ <function ClientResponse.start at 0x7f9972eba7a0>
+          └ <ClientResponse(https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto) [None None]>
+            None
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 999, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                             │        └ <function DataQueue.read at 0x7f9973136440>
+                             └ <aiohttp.client_proto.ResponseHandler object at 0x7f9970eb7f40>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/streams.py", line 640, in read
+    await self._waiter
+          │    └ None
+          └ <aiohttp.client_proto.ResponseHandler object at 0x7f9970eb7f40>
+
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/main.py", line 18, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7f9976befd90>
+    │       └ <function run at 0x7f9976ab2710>
+    └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x7f997275fb50>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f997628f6d0>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f997628f640>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f99762951b0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f99761f0b80>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+  File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+> File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │    │           │    └ Update(update_id=212292529, message=Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+                     │    └ <function Dispatcher.feed_update at 0x7f9972dee200>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261fc10>
+                     └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292529, message=Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x7f997261fdf0>, functools.par...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292529, message=Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x7f997261fe20>, <function TelegramEventObserver.tri...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292529, message=Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC...
+                 └ <function TelegramEventObserver.trigger at 0x7f9970d251b0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Update(update_id=212292529, message=Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<middlewares.usermiddleware.UsersMiddleware object at 0x7f997261ff70>, <function CallableObject.call at 0x7...
+
+  File "/root/bot/middlewares/usermiddleware.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292529, message=Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC...
+                 └ <function CallableObject.call at 0x7f9970d25240>
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x7f997261e140'>>, Update(update_id=212292529, mess...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │    │                           │                  └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x7f9972ded870>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9971bb20e0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f997261e1a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Dispatcher '0x7f997261e140'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9971bb23b0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f9972dfe230>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f9972ded870>
+                     └ <Router '0x7f99729a6f20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f9971bb2a70>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f9972decdc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f99729a7130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f9972ded900>
+                 └ <Router '0x7f99729a6f20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                     │        │       └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │        └ <function TelegramEventObserver.trigger at 0x7f9972decee0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f99729a7130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f997261e140'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f9972f895a0>,), 'skip_updates': T...
+                 │             └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 └ <function CallableObject.call at 0x7f9970d25000>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<function cmd_start_register at 0x7f9972793be0>, Message(message_id=2983, date=datetime.datetime(2024, 8, 1...
+
+  File "/root/bot/handlers/users/start.py", line 37, in cmd_start_register
+    await message.answer_photo(photo=photo, caption=text, reply_markup=keyboard)
+          │       │                  │              │                  └ InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🌟 Наши товары', url=None, callback_data='catalog', web_app=...
+          │       │                  │              └ 'Добро пожаловать в фитнес-клуб <b>ATLIX</b>'
+          │       │                  └ <aiogram.types.input_file.FSInputFile object at 0x7f99718c1750>
+          │       └ <function Message.answer_photo at 0x7f99751a9510>
+          └ Message(message_id=2983, date=datetime.datetime(2024, 8, 18, 20, 4, 50, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+                 │   └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c1750>, business_connection_id=No...
+                 └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+                 │    │       │     │               └ None
+                 │    │       │     └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c1750>, business_connection_id=No...
+                 │    │       └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+                 │    └ <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f9972f89570>
+                 └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+           │    │                   │          │    └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c1750>, business_connection_id=No...
+           │    │                   │          └ <aiogram.client.bot.Bot object at 0x7f9972f895a0>
+           │    │                   └ functools.partial(<bound method AiohttpSession.make_request of <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f9...
+           │    └ ~TelegramType
+           └ <function cast at 0x7f9976256f80>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 188, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+          │                           └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f99718c1750>, business_connection_id=No...
+          └ <class 'aiogram.exceptions.TelegramNetworkError'>
+
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+2024-08-18 23:05:54.598 | ERROR    | aiogram.dispatcher.dispatcher:_process_update:315 - Cause exception while process update id=212292530 by bot id=6770949983
+TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 637, in write_bytes
+    await self.body.write(writer)
+          │    │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f7b62e08b20>
+          │    │    └ <function MultipartWriter.write at 0x7f7b642aab90>
+          │    └ <aiohttp.multipart.MultipartWriter object at 0x7f7b62e08760>
+          └ <aiohttp.client_reqrep.ClientRequest object at 0x7f7b62e089a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/multipart.py", line 952, in write
+    await part.write(writer)
+          │    │     └ <aiohttp.http_writer.StreamWriter object at 0x7f7b62e08b20>
+          │    └ <function AsyncIterablePayload.write at 0x7f7b6428acb0>
+          └ <aiohttp.payload.AsyncIterablePayload object at 0x7f7b62e08d90>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/payload.py", line 442, in write
+    chunk = await self._iter.__anext__()
+                  │    │     └ <slot wrapper '__anext__' of 'async_generator' objects>
+                  │    └ <async_generator object FSInputFile.read at 0x7f7b6380ecc0>
+                  └ <aiohttp.payload.AsyncIterablePayload object at 0x7f7b62e08d90>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/types/input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+               │        │    │    └ 'resources/img/main.jpg'
+               │        │    └ <aiogram.types.input_file.FSInputFile object at 0x7f7b62e084f0>
+               │        └ <function open at 0x7f7b6657db40>
+               └ <module 'aiofiles' from '/root/bot/venv/lib/python3.10/site-packages/aiofiles/__init__.py'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/base.py", line 98, in __aenter__
+    self._obj = await self._coro
+    │    │            │    └ <member '_coro' of '_ContextManager' objects>
+    │    │            └ <aiofiles.base.AiofilesContextManager object at 0x7f7b62e407c0>
+    │    └ <member '_obj' of '_ContextManager' objects>
+    └ <aiofiles.base.AiofilesContextManager object at 0x7f7b62e407c0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiofiles/threadpool/__init__.py", line 94, in _open
+    f = yield from loop.run_in_executor(executor, cb)
+                   │    │               │         └ functools.partial(<built-in function open>, 'resources/img/main.jpg', mode='rb', buffering=-1, encoding=None, errors=None, ne...
+                   │    │               └ None
+                   │    └ <function BaseEventLoop.run_in_executor at 0x7f7b6755feb0>
+                   └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │        │            └ None
+             │        └ None
+             └ None
+
+FileNotFoundError: [Errno 2] No such file or directory: 'resources/img/main.jpg'
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 181, in make_request
+    async with session.post(
+               │       └ <function ClientSession.post at 0x7f7b64078700>
+               └ <aiohttp.client.ClientSession object at 0x7f7b63896320>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 1353, in __aenter__
+    self._resp = await self._coro
+    │    │             │    └ <member '_coro' of '_BaseRequestContextManager' objects>
+    │    │             └ <aiohttp.client._RequestContextManager object at 0x7f7b62e08820>
+    │    └ <member '_resp' of '_BaseRequestContextManager' objects>
+    └ <aiohttp.client._RequestContextManager object at 0x7f7b62e08820>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client.py", line 684, in _request
+    await resp.start(conn)
+          │    │     └ Connection<ConnectionKey(host='api.telegram.org', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers...
+          │    └ <function ClientResponse.start at 0x7f7b642d67a0>
+          └ <ClientResponse(https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto) [None None]>
+            None
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 999, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                             │        └ <function DataQueue.read at 0x7f7b64276440>
+                             └ <aiohttp.client_proto.ResponseHandler object at 0x7f7b638834c0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiohttp/streams.py", line 640, in read
+    await self._waiter
+          │    └ None
+          └ <aiohttp.client_proto.ResponseHandler object at 0x7f7b638834c0>
+
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/root/bot/main.py", line 18, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7f7b67ebbd90>
+    │       └ <function run at 0x7f7b67d7e710>
+    └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x7f7b639610e0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f7b6755f6d0>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f7b6755f640>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f7b673691b0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f7b674c0b80>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+  File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...A/sendPhoto')>)>
+> File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │    │           │    └ Update(update_id=212292530, message=Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+                     │    └ <function Dispatcher.feed_update at 0x7f7b63e12200>
+                     └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b63853b20>
+                     └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292530, message=Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x7f7b63853d00>, functools.par...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292530, message=Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x7f7b63853d30>, <function TelegramEventObserver.tri...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292530, message=Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC...
+                 └ <function TelegramEventObserver.trigger at 0x7f7b63899bd0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │             └ Update(update_id=212292530, message=Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<middlewares.usermiddleware.UsersMiddleware object at 0x7f7b63853e80>, <function CallableObject.call at 0x7...
+
+  File "/root/bot/middlewares/usermiddleware.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292530, message=Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC...
+                 └ <function CallableObject.call at 0x7f7b63899b40>
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x7f7b63852050'>>, Update(update_id=212292530, mess...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │    │                           │                  └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x7f7b63e11870>
+                 └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b63899d80>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b638520b0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f7b63e11870>
+                     └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b63899e10>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b63e22230>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Router 'handlers.users'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f7b63e11870>
+                     └ <Router '0x7f7b639caf20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b6389aa70>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b639cb130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Router '0x7f7b639caf20'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │        │       └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │        └ <function TelegramEventObserver.trigger at 0x7f7b63e10ee0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b639cb130>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │             └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 └ <function CallableObject.call at 0x7f7b6389ab00>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<function cmd_start_register at 0x7f7b63907be0>, Message(message_id=2984, date=datetime.datetime(2024, 8, 1...
+
+  File "/root/bot/handlers/users/start.py", line 37, in cmd_start_register
+    await message.answer_photo(photo=photo, caption=text, reply_markup=keyboard)
+          │       │                  │              │                  └ InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🌟 Наши товары', url=None, callback_data='catalog', web_app=...
+          │       │                  │              └ 'Добро пожаловать в фитнес-клуб <b>ATLIX</b>'
+          │       │                  └ <aiogram.types.input_file.FSInputFile object at 0x7f7b62e084f0>
+          │       └ <function Message.answer_photo at 0x7f7b66489510>
+          └ Message(message_id=2984, date=datetime.datetime(2024, 8, 18, 20, 5, 54, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+                 │   └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f7b62e084f0>, business_connection_id=No...
+                 └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+                 │    │       │     │               └ None
+                 │    │       │     └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f7b62e084f0>, business_connection_id=No...
+                 │    │       └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+                 │    └ <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f7b640f1570>
+                 └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+           │    │                   │          │    └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f7b62e084f0>, business_connection_id=No...
+           │    │                   │          └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+           │    │                   └ functools.partial(<bound method AiohttpSession.make_request of <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f7...
+           │    └ ~TelegramType
+           └ <function cast at 0x7f7b67526f80>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 188, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+          │                           └ SendPhoto(chat_id=916244290, photo=<aiogram.types.input_file.FSInputFile object at 0x7f7b62e084f0>, business_connection_id=No...
+          └ <class 'aiogram.exceptions.TelegramNetworkError'>
+
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot6770949983:AAEoTKWa8wgHHMZkyR527YrHyXh_bqpB8xA/sendPhoto
+2024-08-19 11:25:43.695 | ERROR    | aiogram.dispatcher.dispatcher:_process_update:315 - Cause exception while process update id=212292558 by bot id=6770949983
+KeyError: 'order'
+Traceback (most recent call last):
+
+  File "/root/bot/main.py", line 18, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7f7b67ebbd90>
+    │       └ <function run at 0x7f7b67d7e710>
+    └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x7f7b639610e0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f7b6755f6d0>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f7b6755f640>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f7b673691b0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f7b674c0b80>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+> File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │    │           │    └ Update(update_id=212292558, message=Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+                     │    └ <function Dispatcher.feed_update at 0x7f7b63e12200>
+                     └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b63853b20>
+                     └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292558, message=Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x7f7b63853d00>, functools.par...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292558, message=Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x7f7b63853d30>, <function TelegramEventObserver.tri...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292558, message=Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC...
+                 └ <function TelegramEventObserver.trigger at 0x7f7b62c427a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │             └ Update(update_id=212292558, message=Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<middlewares.usermiddleware.UsersMiddleware object at 0x7f7b63853e80>, <function CallableObject.call at 0x7...
+
+  File "/root/bot/middlewares/usermiddleware.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292558, message=Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC...
+                 └ <function CallableObject.call at 0x7f7b62c42e60>
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x7f7b63852050'>>, Update(update_id=212292558, mess...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │    │                           │                  └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x7f7b63e11870>
+                 └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b62c432e0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b638520b0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f7b63e11870>
+                     └ <Router 'handlers.admins'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b62c431c0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b6394b5e0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Router 'handlers.admins'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f7b63e11870>
+                     └ <Router '0x7f7b6394bbb0'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b62c43370>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b6394bbe0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Router '0x7f7b6394bbb0'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │        │       └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │        └ <function TelegramEventObserver.trigger at 0x7f7b63e10ee0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b6394bbe0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │             └ Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, 25, 43, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 └ <function CallableObject.call at 0x7f7b62c43400>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<function order_desc_c at 0x7f7b637b8a60>, Message(message_id=3020, date=datetime.datetime(2024, 8, 19, 8, ...
+
+  File "/root/bot/handlers/admins/apanel.py", line 759, in order_desc_c
+    order = Order.get(Order.id == data['order'])
+            │     │   │     │     └ {'msg_id': 3019, 'category': 2, 'video': 5}
+            │     │   │     └ <peewee.FieldAccessor object at 0x7f7b639c9cf0>
+            │     │   └ <Model: Order>
+            │     └ <classmethod(<function Model.get at 0x7f7b639cd3f0>)>
+            └ <Model: Order>
+
+KeyError: 'order'
+2024-08-19 11:25:53.318 | ERROR    | aiogram.dispatcher.dispatcher:_process_update:315 - Cause exception while process update id=212292559 by bot id=6770949983
+TelegramBadRequest: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+Traceback (most recent call last):
+
+  File "/root/bot/main.py", line 18, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7f7b67ebbd90>
+    │       └ <function run at 0x7f7b67d7e710>
+    └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x7f7b639610e0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f7b6755f6d0>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f7b6755f640>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f7b673691b0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f7b674c0b80>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+> File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │    │           │    └ Update(update_id=212292559, message=Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+                     │    └ <function Dispatcher.feed_update at 0x7f7b63e12200>
+                     └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b63853b20>
+                     └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292559, message=Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x7f7b63853d00>, functools.par...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292559, message=Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x7f7b63853d30>, <function TelegramEventObserver.tri...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292559, message=Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC...
+                 └ <function TelegramEventObserver.trigger at 0x7f7b62c43250>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │             └ Update(update_id=212292559, message=Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC...
+                 └ functools.partial(<middlewares.usermiddleware.UsersMiddleware object at 0x7f7b63853e80>, <function CallableObject.call at 0x7...
+
+  File "/root/bot/middlewares/usermiddleware.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │       └ Update(update_id=212292559, message=Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC...
+                 └ <function CallableObject.call at 0x7f7b62c42e60>
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x7f7b63852050'>>, Update(update_id=212292559, mess...
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │    │                           │                  └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x7f7b63e11870>
+                 └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b62c427a0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b638520b0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Dispatcher '0x7f7b63852050'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f7b63e11870>
+                     └ <Router 'handlers.admins'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b62c432e0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b6394b5e0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Router 'handlers.admins'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │      │                           │                  └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x7f7b63e11870>
+                     └ <Router '0x7f7b6394bbb0'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │        │                     │               └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x7f7b62c431c0>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x7f7b63e10dc0>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b6394bbe0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x7f7b63e11900>
+                 └ <Router '0x7f7b6394bbb0'>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                     │        │       └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                     │        └ <function TelegramEventObserver.trigger at 0x7f7b63e10ee0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x7f7b6394bbe0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'dispatcher': <Dispatcher '0x7f7b63852050'>, 'bots': (<aiogram.client.bot.Bot object at 0x7f7b640f15a0>,), 'skip_updates': T...
+                 │             └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+                 └ <function CallableObject.call at 0x7f7b62c43400>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+                 └ functools.partial(<function order_desc_c at 0x7f7b637b8a60>, Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, ...
+
+  File "/root/bot/handlers/admins/apanel.py", line 757, in order_desc_c
+    await message.bot.edit_message_reply_markup(chat_id=message.from_user.id, message_id=data['msg_id'])
+          │       │                                     │       │         │              └ {'msg_id': 3019, 'category': 2, 'video': 5}
+          │       │                                     │       │         └ 916244290
+          │       │                                     │       └ User(id=916244290, is_bot=False, first_name='Vitalii', last_name=None, username='Atlix_Vitalii', language_code='ru', is_premi...
+          │       │                                     └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+          │       └ <property object at 0x7f7b66ba1d00>
+          └ Message(message_id=3021, date=datetime.datetime(2024, 8, 19, 8, 25, 53, tzinfo=TzInfo(UTC)), chat=Chat(id=916244290, type='pr...
+
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 1515, in edit_message_reply_markup
+    return await self(call, request_timeout=request_timeout)
+                 │    │                     └ None
+                 │    └ EditMessageReplyMarkup(business_connection_id=None, chat_id=916244290, message_id=3019, inline_message_id=None, reply_markup=...
+                 └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+                 │    │       │     │               └ None
+                 │    │       │     └ EditMessageReplyMarkup(business_connection_id=None, chat_id=916244290, message_id=3019, inline_message_id=None, reply_markup=...
+                 │    │       └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+                 │    └ <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f7b640f1570>
+                 └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+           │    │                   │          │    └ EditMessageReplyMarkup(business_connection_id=None, chat_id=916244290, message_id=3019, inline_message_id=None, reply_markup=...
+           │    │                   │          └ <aiogram.client.bot.Bot object at 0x7f7b640f15a0>
+           │    │                   └ functools.partial(<bound method AiohttpSession.make_request of <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f7...
+           │    └ ~TelegramType
+           └ <function cast at 0x7f7b67526f80>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 189, in make_request
+    response = self.check_response(
+               │    └ <function BaseSession.check_response at 0x7f7b640f4940>
+               └ <aiogram.client.session.aiohttp.AiohttpSession object at 0x7f7b640f1570>
+  File "/root/bot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+          │                         │               └ 'Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current conte...
+          │                         └ EditMessageReplyMarkup(business_connection_id=None, chat_id=916244290, message_id=3019, inline_message_id=None, reply_markup=...
+          └ <class 'aiogram.exceptions.TelegramBadRequest'>
+
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
